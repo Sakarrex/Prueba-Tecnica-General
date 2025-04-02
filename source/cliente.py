@@ -2,11 +2,7 @@ import requests
 
 baseurl = "http://127.0.0.1:5000/"
 
-def cargarProf():
-    nombre = input("Nombre de profesional: ")
-    rubro = input("Rubro de profesional: ")
-    ubicacion = input("Ubicacion de profesional: ")
-    descripcion = input("Descripcion de profesional: ")
+def cargarProf(nombre,rubro,ubicacion,descripcion):
     data = {
     "nombre" : nombre,
     "rubro" : rubro,
@@ -23,9 +19,7 @@ def listarProf():
     print(type(response))
     return response
     
-def buscarProf():
-    rubro = input("Rubro: ")
-    ubicacion = input("Ubicacion: ")
+def buscarProf(rubro,ubicacion):
     url = baseurl + ("buscarprof?rubro={}&ubicacion={}".format(rubro,ubicacion))
     response = requests.get(url)
     return response
@@ -35,11 +29,17 @@ if __name__ == '__main__':
 
     while opcion != 4:
         if opcion == 1:
-            print(cargarProf().text)
+            nombre = input("Nombre de profesional: ")
+            rubro = input("Rubro de profesional: ")
+            ubicacion = input("Ubicacion de profesional: ")
+            descripcion = input("Descripcion de profesional: ")
+            print(cargarProf(nombre,rubro,ubicacion,descripcion).text)
         elif opcion == 2:
             print(listarProf().text)
         elif opcion == 3:
-            print(buscarProf().text)
+            rubro = input("Rubro: ")
+            ubicacion = input("Ubicacion: ")
+            print(buscarProf(rubro,ubicacion).text)
         
         opcion = int(input("Eligir opcion: \n"
         "1: cargar profesional \n"
