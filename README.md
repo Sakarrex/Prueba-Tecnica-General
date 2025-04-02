@@ -1,5 +1,5 @@
 # Prueba Tecnica General
-##Requisitos
+## Requisitos
 *Python
 *MySQL
 
